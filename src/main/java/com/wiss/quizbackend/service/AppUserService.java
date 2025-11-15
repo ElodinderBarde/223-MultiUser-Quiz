@@ -4,6 +4,7 @@ import com.wiss.quizbackend.entity.AppUser;
 import com.wiss.quizbackend.entity.RoleEnum;
 import com.wiss.quizbackend.repository.AppUserRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -123,10 +124,5 @@ public class AppUserService {
         return email != null && email.matches(emailRegex);
     }
 
+
 }
-
-
-
-
-
-
