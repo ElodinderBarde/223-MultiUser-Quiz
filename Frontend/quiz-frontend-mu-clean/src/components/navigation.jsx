@@ -13,6 +13,7 @@ const Navigation = () => {
             <Link to="/admin">Fragen verwalten</Link>
             <Link to="/regeln">Regeln</Link>
             <Link to="/blabli">Impressum</Link>
+            <Link to="/login">Login</Link>
 
             {/* User-Anzeige */}
             {isAuthenticated && (

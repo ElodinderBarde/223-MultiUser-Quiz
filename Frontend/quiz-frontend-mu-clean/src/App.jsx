@@ -8,6 +8,7 @@ import Impressum from "./pages/Impressum";
 import Rules from "./pages/Rules";
 import PageNotFound from "./pages/PageNotFound";
 import Layout from "./components/layout";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/admin" element={<QuestionManager />} />
         <Route path="/regeln" element={<Rules />} />
         <Route path="/blabli" element={<Impressum />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
