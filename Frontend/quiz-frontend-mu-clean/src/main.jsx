@@ -6,12 +6,11 @@ import "./index.css";
 import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
+ <StrictMode>
   <AuthProvider>
-    <StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </StrictMode>
 </AuthProvider>
-
+ </StrictMode>
 );
