@@ -76,7 +76,8 @@ const LoginForm = ({ onLogin }) => {
     // ==========================================
     // HANDLER: Submit
     // ==========================================
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
+        // ← async hinzufügen!
         e.preventDefault();
 
         // Alle Felder validieren
@@ -96,12 +97,16 @@ const LoginForm = ({ onLogin }) => {
             password: password,
         };
 
-        // Parent-Funktion aufrufen (kommt später von AuthContext)
-        if (onLogin) {
-            onLogin(loginData);
+        // Parent-Funktion aufrufen (jetzt mit await!)
+        try {
+            if (onLogin) {
+                await onLogin(loginData);
+            }
+        } catch (error) {
+            console.error("LoginForm Error:", error);
+        } finally {
+            setIsLoading(false); // Jetzt im finally Block!
         }
-
-        setIsLoading(false);
     };
 
     // ==========================================
@@ -173,4 +178,3 @@ const LoginForm = ({ onLogin }) => {
 };
 
 export default LoginForm;
-
