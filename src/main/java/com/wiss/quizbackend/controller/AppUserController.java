@@ -36,6 +36,10 @@ public class AppUserController {
         return ResponseEntity.ok(users);
     }
 
+    @GetMapping("/debug")
+    public String debug() {
+        return "AppUserController is working!";
+    }
 
 
 }

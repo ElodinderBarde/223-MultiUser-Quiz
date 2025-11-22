@@ -1,28 +1,44 @@
-import {useContext, useState}   from "react";
-import {AuthContext} from "../contexts/AuthContext.jsx";
+import { useContext, useState } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
 
-
+/**
+ * Test Component für den AuthContext
+ * Wird später durch echte Login/Register Forms ersetzt
+ */
 function AuthTest() {
-    const {user, token, login, logout, isAuthenticated, isLoading} = useContext(AuthContext);
+    // ==========================================
+    // CONTEXT
+    // ==========================================
+    const { user, login, logout, isAuthenticated, isLoading } =
+        useContext(AuthContext);
+
+    // ==========================================
+    // LOCAL STATE (für Formular)
+    // ==========================================
     const [usernameOrEmail, setUsernameOrEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    // ==========================================
+    // HANDLER
+    // ==========================================
     const handleLogin = (e) => {
         e.preventDefault();
 
-        if (!usernameOrEmail || !password) {
-            alert('Please enter both username/email and password.');
+        if (!usernameOrEmail.trim() || !password.trim()) {
+            alert('Bitte Username/Email und Password eingeben!');
             return;
         }
-        ;
 
-        login({usernameOrEmail, password});
+        login(usernameOrEmail, password);
 
+        // Formular zurücksetzen
         setUsernameOrEmail('');
         setPassword('');
+    };
 
-    }
-
+    // ==========================================
+    // RENDER
+    // ==========================================
     return (
         <div style={{
             border: '2px solid #888',
@@ -48,6 +64,9 @@ function AuthTest() {
             </div>
 
             {!isAuthenticated ? (
+                // ==========================================
+                // NICHT EINGELOGGT: Login Form zeigen
+                // ==========================================
                 <form onSubmit={handleLogin}>
                     <div style={{ marginBottom: '10px', paddingRight: "20px" }}>
                         <input
@@ -104,6 +123,9 @@ function AuthTest() {
                     </p>
                 </form>
             ) : (
+                // ==========================================
+                // EINGELOGGT: User-Daten anzeigen
+                // ==========================================
                 <div>
                     <div style={{
                         background: 'white',

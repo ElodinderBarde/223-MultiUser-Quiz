@@ -162,4 +162,9 @@ public class AuthController {
 
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/debug")
+    public String debug() {
+        return " AuthController is working!";
+    }
 }
