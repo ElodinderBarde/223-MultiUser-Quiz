@@ -115,13 +115,15 @@ public class QuestionMapper {
                 .filter(answer -> !answer.equals(dto.getCorrectAnswer()))
                 .toList();
 
-        return new Question(
-                dto.getQuestion(),
-                dto.getCorrectAnswer(),
-                incorrectAnswers,
-                dto.getCategory(),
-                dto.getDifficulty()
-        );
+
+    return Question.builder()
+                .id(dto.getId())
+                .question(dto.getQuestion())
+                .correctAnswer(dto.getCorrectAnswer())
+                .incorrectAnswers(incorrectAnswers)
+                .category(dto.getCategory())
+                .difficulty(dto.getDifficulty())
+                .build();
     }
 
     /**
